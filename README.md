@@ -10,15 +10,25 @@ sudo yum update -y
 # https://golang.org/dl/
 wget https://dl.google.com/go/go1.14.1.linux-amd64.tar.gz
 
-tar xf go1.14.1.linux-amd64.tar.gz
-cd go/bin/
+sudo tar xf go1.14.1.linux-amd64.tar.gz -C /usr/local
 
-# copy go, gofmt binary to local binary directory
-cp * /usr/local/bin
+# adjust the path variable
+export PATH=$PATH:/usr/local/go/bin
+source ~/.bash_profile
 
 # check go version
 go version
 ```
 
+# test the installation
+```
+git clone https://github.com/kwangh/go-tutorial.git
+cd go-tutorial/hello
+go build
+./hello
+```
+
 Reference
-- https://dejavuqa.tistory.com/321
+- https://linuxize.com/post/how-to-install-go-on-centos-7/
+
+---
