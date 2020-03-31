@@ -33,7 +33,6 @@ func (s SafeCounter) checkvisited(url string) bool {
 // pages starting with url, to a maximum of depth.
 func Crawl(url string, depth int, fetcher Fetcher) {
 	defer c.wg.Done()
-
 	if depth <= 0 {
 		return
 	}
@@ -47,10 +46,6 @@ func Crawl(url string, depth int, fetcher Fetcher) {
 		fmt.Println(err)
 		return
 	}
-
-	c.mux.Lock()
-	c.v[url] = true
-	c.mux.Unlock()
 
 	fmt.Printf("found: %s %q\n", url, body)
 	for _, u := range urls {
