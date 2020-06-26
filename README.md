@@ -32,3 +32,13 @@ Reference
 - https://linuxize.com/post/how-to-install-go-on-centos-7/
 
 ---
+
+
+# extra settings
+
+## add go path to profile 
+```
+echo '[[ ":$PATH:" != *":/usr/local/go/bin:"* ]] && export PATH="${PATH}:/usr/local/go/bin"' >> ~/.profile
+echo '[[ ":$PATH:" != *":/root/go/bin:"* ]] && export PATH="${PATH}:/root/go/bin"' >> ~/.profile
+source ~/.profile
+```
