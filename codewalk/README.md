@@ -1,5 +1,6 @@
 ## Result
 
+```
 Wins, losses staying at k =   1: 264/990 (26.7%), 726/990 (73.3%)
 Wins, losses staying at k =   2: 218/990 (22.0%), 772/990 (78.0%)
 Wins, losses staying at k =   3: 297/990 (30.0%), 693/990 (70.0%)
@@ -100,3 +101,4 @@ Wins, losses staying at k =  97: 227/990 (22.9%), 763/990 (77.1%)
 Wins, losses staying at k =  98: 227/990 (22.9%), 763/990 (77.1%)
 Wins, losses staying at k =  99: 234/990 (23.6%), 756/990 (76.4%)
 Wins, losses staying at k = 100: 214/990 (21.6%), 776/990 (78.4%)
+```
