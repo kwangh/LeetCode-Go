@@ -1,6 +1,9 @@
 # go-tutorial
 Follows "A Tour of GO" from https://tour.golang.org/list on CentOS 7 machine
 
+## leetcode
+Started solving https://leetcode.com/problemset/top-interview-questions/ problems since Nov 17, 2020
+
 ---
 # install go on CentOS 7 machine
 ```
