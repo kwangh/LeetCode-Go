@@ -5,7 +5,7 @@ Follows "A Tour of GO" from https://tour.golang.org/list on CentOS 7 machine
 Started solving https://leetcode.com/problemset/top-interview-questions/ problems since Nov 17, 2020
 
 ---
-# install go on CentOS 7 machine
+## install go on CentOS 7 machine
 ```
 sudo yum update -y
 
@@ -23,7 +23,7 @@ source ~/.bash_profile
 go version
 ```
 
-# test the installation
+## test the installation
 ```
 git clone https://github.com/kwangh/go-tutorial.git
 cd go-tutorial/hello
@@ -37,7 +37,7 @@ Reference
 ---
 
 
-# extra settings
+### extra settings
 
 ## add go path to profile 
 ```
