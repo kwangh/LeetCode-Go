@@ -38,8 +38,7 @@ Reference
 
 
 ### extra settings
-
-## add go path to profile 
+#### add go path to profile 
 ```
 echo '[[ ":$PATH:" != *":/usr/local/go/bin:"* ]] && export PATH="${PATH}:/usr/local/go/bin"' >> ~/.profile
 echo '[[ ":$PATH:" != *":/root/go/bin:"* ]] && export PATH="${PATH}:/root/go/bin"' >> ~/.profile
