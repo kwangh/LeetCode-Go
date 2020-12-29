@@ -1,8 +1,11 @@
 # go-tutorial
 Follows "A Tour of GO" from https://tour.golang.org/list on CentOS 7 machine
 
+## leetcode
+Started solving https://leetcode.com/problemset/top-interview-questions/ problems since Nov 17, 2020
+
 ---
-# install go on CentOS 7 machine
+## install go on CentOS 7 machine
 ```
 sudo yum update -y
 
@@ -20,7 +23,7 @@ source ~/.bash_profile
 go version
 ```
 
-# test the installation
+## test the installation
 ```
 git clone https://github.com/kwangh/go-tutorial.git
 cd go-tutorial/hello
@@ -34,9 +37,8 @@ Reference
 ---
 
 
-# extra settings
-
-## add go path to profile 
+### extra settings
+#### add go path to profile 
 ```
 echo '[[ ":$PATH:" != *":/usr/local/go/bin:"* ]] && export PATH="${PATH}:/usr/local/go/bin"' >> ~/.profile
 echo '[[ ":$PATH:" != *":/root/go/bin:"* ]] && export PATH="${PATH}:/root/go/bin"' >> ~/.profile
