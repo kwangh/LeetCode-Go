@@ -24,11 +24,6 @@ type Storer interface {
 	Store(d *Data) error
 }
 
-type PullStorer interface {
-	Puller
-	Storer
-}
-
 type Xenia struct {
 	Host    string
 	Timeout time.Duration
@@ -40,7 +35,6 @@ func (*Xenia) Pull(d *Data) error {
 		return io.EOF
 	case 5:
 		return errors.New("Error reading data from Xenia")
-
 	default:
 		d.Line = "Data"
 		fmt.Println("In:", d.Line)
@@ -59,8 +53,8 @@ func (*Pillar) Store(d *Data) error {
 }
 
 type System struct {
-	Puller
-	Storer
+	Xenia
+	Pillar
 }
 
 func pull(p Puller, data []Data) (int, error) {
@@ -83,13 +77,13 @@ func store(s Storer, data []Data) (int, error) {
 	return len(data), nil
 }
 
-func Copy(ps PullStorer, batch int) error {
+func Copy(sys *System, batch int) error {
 	data := make([]Data, batch)
 
 	for {
-		i, err := pull(ps, data)
+		i, err := pull(&sys.Xenia, data)
 		if i > 0 {
-			if _, err := store(ps, data[:i]); err != nil {
+			if _, err := store(&sys.Pillar, data[:i]); err != nil {
 				return err
 			}
 		}
@@ -102,11 +96,11 @@ func Copy(ps PullStorer, batch int) error {
 
 func main() {
 	sys := System{
-		Puller: &Xenia{
+		Xenia: Xenia{
 			Host:    "localhost:8000",
 			Timeout: time.Second,
 		},
-		Storer: &Pillar{
+		Pillar: Pillar{
 			Host:    "localhost:9000",
 			Timeout: time.Second,
 		},
