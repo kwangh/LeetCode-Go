@@ -1,6 +1,6 @@
 package sort
 
-// SelectionSort return sorted int slices
+// SelectionSort return sorted int slice
 // time complexity: O(n^2)
 // space complexity: O(n)
 func SelectionSort(s []int) {
@@ -15,7 +15,7 @@ func SelectionSort(s []int) {
 	}
 }
 
-// InsertionSort return sorted int slices
+// InsertionSort return sorted int slice
 // time complexity: O(n^2)
 // space complexity: O(n)
 func InsertionSort(s []int) {
@@ -26,5 +26,18 @@ func InsertionSort(s []int) {
 			j--
 		}
 		s[j+1] = key
+	}
+}
+
+// BubbleSort return sorted int slice
+// time complexity: O(n^2)
+// space complexity: O(n)
+func BubbleSort(s []int) {
+	for i := 0; i < len(s)-1; i++ {
+		for j := 1; j < len(s)-i; j++ {
+			if s[j-1] > s[j] {
+				s[j-1], s[j] = s[j], s[j-1]
+			}
+		}
 	}
 }
