@@ -22,4 +22,7 @@ func main() {
 
 	sort.InsertionSort(slices[2].slice)
 	fmt.Println(slices[2].slice)
+
+	sort.MergeSort(slices[2].slice, 0, len(slices[2].slice)-1)
+	fmt.Println(slices[2].slice)
 }

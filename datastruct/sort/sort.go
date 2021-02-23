@@ -1,6 +1,6 @@
 package sort
 
-// SelectionSort return sorted int slice
+// SelectionSort returns sorted int slice
 // time complexity: O(n^2)
 // space complexity: O(n)
 func SelectionSort(s []int) {
@@ -15,7 +15,7 @@ func SelectionSort(s []int) {
 	}
 }
 
-// InsertionSort return sorted int slice
+// InsertionSort returns sorted int slice
 // time complexity: O(n^2)
 // space complexity: O(n)
 func InsertionSort(s []int) {
@@ -29,7 +29,7 @@ func InsertionSort(s []int) {
 	}
 }
 
-// BubbleSort return sorted int slice
+// BubbleSort returns sorted int slice
 // time complexity: O(n^2)
 // space complexity: O(n)
 func BubbleSort(s []int) {
@@ -39,5 +39,46 @@ func BubbleSort(s []int) {
 				s[j-1], s[j] = s[j], s[j-1]
 			}
 		}
+	}
+}
+
+func merge(s []int, start int, end int, middle int) {
+	tmp := []int{}
+	i, j := start, middle+1
+	for i <= middle && j <= end {
+		if s[i] <= s[j] {
+			tmp = append(tmp, s[i])
+			i++
+		} else {
+			tmp = append(tmp, s[j])
+			j++
+		}
+	}
+
+	for i <= middle {
+		tmp = append(tmp, s[i])
+		i++
+	}
+	for j <= end {
+		tmp = append(tmp, s[j])
+		j++
+	}
+
+	k := 0
+	for i := start; i <= end; i++ {
+		s[i] = tmp[k]
+		k++
+	}
+}
+
+// MergeSort returns sorted int slice
+// time complexity: O(nlogn)
+// space complexity: O(n) = 2n
+func MergeSort(s []int, start int, end int) {
+	if start < end {
+		m := (start + end) / 2
+		MergeSort(s, start, m)
+		MergeSort(s, m+1, end)
+		merge(s, start, end, m)
 	}
 }
