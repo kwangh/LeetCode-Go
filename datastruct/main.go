@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	"github.com/kwangh/go-tutorial/datastruct/dp"
 	"github.com/kwangh/go-tutorial/datastruct/sort"
 )
 
@@ -30,4 +31,7 @@ func main() {
 
 	sort.QuickSort(slices[4].slice, 0, len(slices[4].slice)-1)
 	fmt.Println(slices[4].slice)
+
+	fmt.Println(dp.Fibonacci(28, true))
+	fmt.Println(dp.Fibonacci(14, false))
 }
