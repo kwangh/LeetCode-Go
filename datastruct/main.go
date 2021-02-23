@@ -7,7 +7,10 @@ import (
 )
 
 func main() {
-	s := []int{1, 5, 4, 3, 2}
-	sort.SelectionSort(s)
-	fmt.Println(s)
+	s1 := []int{2, 5, 2, 1, 4}
+	sort.SelectionSort(s1)
+	fmt.Println(s1)
+	s2 := []int{2, 5, 2, 1, 4}
+	sort.InsertionSort(s2)
+	fmt.Println(s2)
 }
