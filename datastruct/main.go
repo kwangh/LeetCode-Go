@@ -7,10 +7,15 @@ import (
 )
 
 func main() {
-	s1 := []int{2, 5, 2, 1, 4}
-	sort.SelectionSort(s1)
-	fmt.Println(s1)
-	s2 := []int{2, 5, 2, 1, 4}
-	sort.InsertionSort(s2)
-	fmt.Println(s2)
+	slices := []struct {
+		slice []int
+	}{
+		{[]int{2, 5, 2, 1, 4}},
+		{[]int{1, 3, 2, 5, 1}},
+	}
+	sort.SelectionSort(slices[0].slice)
+	fmt.Println(slices[0].slice)
+
+	sort.InsertionSort(slices[1].slice)
+	fmt.Println(slices[1].slice)
 }

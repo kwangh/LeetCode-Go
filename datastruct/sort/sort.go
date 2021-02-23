@@ -22,7 +22,7 @@ func InsertionSort(s []int) {
 	for i := 1; i < len(s); i++ {
 		key, j := s[i], i-1
 		for j >= 0 && key < s[j] {
-			s[j], s[j+1] = s[j+1], s[j]
+			s[j+1] = s[j]
 			j--
 		}
 		s[j+1] = key
