@@ -82,3 +82,28 @@ func MergeSort(s []int, start int, end int) {
 		merge(s, start, end, m)
 	}
 }
+
+// QuickSort returns sorted int slice
+// time complexity: O(nlogn) worst case O(n^2)
+// space complexity: O(n)
+func QuickSort(s []int, start int, end int) {
+	i, j := start, end
+	pivot := s[(start+end)/2]
+	for i < j {
+		for s[j] > pivot {
+			j--
+		}
+		for i < j && s[i] < pivot {
+			i++
+		}
+		s[i], s[j] = s[j], s[i]
+	}
+
+	if start < j {
+		QuickSort(s, start, j-1)
+	}
+
+	if i < end {
+		QuickSort(s, i+1, end)
+	}
+}
