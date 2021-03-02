@@ -6,6 +6,3 @@
 
 # Unignore all dirs
 !*/
-
-# Ignore leetcode/main.go
-leetcode/main.go
