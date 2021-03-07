@@ -36,4 +36,7 @@ func TestLists(t *testing.T) {
 		testList = testList.Next
 		want = want.Next
 	}
+	if testList.Val != want.Val {
+		t.Errorf("want: %d, instead got %d\n", want.Val, testList.Val)
+	}
 }
