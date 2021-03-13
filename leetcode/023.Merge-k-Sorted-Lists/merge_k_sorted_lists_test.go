@@ -17,21 +17,18 @@ func TestMergeKLists(t *testing.T) {
 		},
 		{
 			in:   []*ListNode{},
-			want: &ListNode{},
+			want: nil,
 		},
 		{
-			in:   []*ListNode{{}},
-			want: &ListNode{},
+			in:   []*ListNode{nil},
+			want: nil,
 		},
 	}
 
 	for _, c := range cases {
 		got := mergeKLists(c.in)
-		if got == nil {
-			t.Errorf("got is nil")
-			return
-		}
 
+		t.Logf("want:%+v got:%+v", c.want, got)
 		for got != nil && c.want != nil {
 			t.Logf("want:%d got:%d", c.want.Val, got.Val)
 			if got.Val != c.want.Val {

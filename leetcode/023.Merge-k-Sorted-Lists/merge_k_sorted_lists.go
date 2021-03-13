@@ -1,5 +1,9 @@
 package leetcode
 
+import (
+	"sort"
+)
+
 type ListNode struct {
 	Val  int
 	Next *ListNode
@@ -7,28 +11,28 @@ type ListNode struct {
 
 func mergeKLists(lists []*ListNode) *ListNode {
 	if len(lists) == 0 {
-		return &ListNode{}
+		return nil
 	}
 	if len(lists) == 1 {
 		return lists[0]
 	}
 
-	res := lists[0]
-	for i := 1; i < len(lists)-1; i++ {
-		a := lists[i]
-		t := res
-		for a != nil && t != nil {
-			if a.Val < t.Val {
-				tmp := &ListNode{Val: a.Val, Next: t}
-				a = a.Next
-			} else {
-				t = t.Next
-			}
-		}
-		for a != nil {
-			res.Next = a
-			a = a.Next
+	s := []int{}
+	for i := 0; i < len(lists); i++ {
+		list := lists[i]
+		for list != nil {
+			s = append(s, list.Val)
+			list = list.Next
 		}
 	}
-	return res
+
+	res := &ListNode{}
+	t := res
+	sort.Ints(s)
+	for i := 0; i < len(s); i++ {
+		t.Next = &ListNode{Val: s[i]}
+		t = t.Next
+	}
+
+	return res.Next
 }
