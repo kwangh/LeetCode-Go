@@ -29,10 +29,15 @@ func divide(dividend int, divisor int) int {
 	}
 
 	result := 0
-	for sum := 0; sum <= dividend; sum += divisor {
-		result++
+	for dividend >= divisor {
+		d, m := divisor, 1
+		for d<<1 <= dividend {
+			d = d << 1
+			m = m << 1
+		}
+		dividend -= d
+		result += m
 	}
-	result -= 1
 
 	if negative {
 		result = -result
