@@ -1,33 +1,27 @@
 package leetcode
 
 import (
-	"fmt"
 	"strconv"
 )
 
-func count(n int) string {
+func countAndSay(n int) string {
 	if n == 1 {
 		return "1"
 	}
 
-	s := count(n - 1)
-	fmt.Println(s)
-	r := []rune(s)
+	runes := []rune(countAndSay(n - 1))
 	res := ""
-	c := r[0]
-	count := 1
-	for i := 1; i < len(r); i++ {
-		if r[i] == c {
+	c := runes[0]
+	count := 0
+	for _, r := range runes {
+		if r == c {
 			count++
 		} else {
 			res += strconv.Itoa(count) + string(c)
-			c = r[i]
+			c = r
 			count = 1
 		}
 	}
+	res += strconv.Itoa(count) + string(c)
 	return string(res)
-}
-
-func countAndSay(n int) string {
-	return count(n)
 }
