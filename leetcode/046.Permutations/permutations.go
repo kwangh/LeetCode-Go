@@ -11,9 +11,7 @@ func contains(nums []int, v int) bool {
 
 func mutate(result *[][]int, cur, nums []int) {
 	if len(cur) == len(nums) {
-		temp := make([]int, len(cur))
-		copy(temp, cur)
-		*result = append(*result, temp)
+		*result = append(*result, append([]int{}, cur...))
 	} else {
 		for _, n := range nums {
 			if contains(cur, n) {
