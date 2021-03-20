@@ -14,15 +14,15 @@ func mutate(result *[][]int, cur, nums []int) {
 		temp := make([]int, len(cur))
 		copy(temp, cur)
 		*result = append(*result, temp)
-	}
-
-	for _, n := range nums {
-		if contains(cur, n) {
-			continue
+	} else {
+		for _, n := range nums {
+			if contains(cur, n) {
+				continue
+			}
+			cur = append(cur, n)
+			mutate(result, cur, nums)
+			cur = cur[:len(cur)-1]
 		}
-		cur = append(cur, n)
-		mutate(result, cur, nums)
-		cur = cur[:len(cur)-1]
 	}
 }
 
