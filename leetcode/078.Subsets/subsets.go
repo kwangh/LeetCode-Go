@@ -2,7 +2,8 @@ package leetcode
 
 func subset(res *[][]int, cur, nums []int) {
 	if len(nums) == 0 {
-		*res = append(*res, append([]int{}, cur...))
+		var tmp []int
+		*res = append(*res, append(tmp, cur...))
 		return
 	}
 	subset(res, cur, nums[1:])
@@ -11,6 +12,7 @@ func subset(res *[][]int, cur, nums []int) {
 
 func subsets(nums []int) [][]int {
 	var res [][]int
-	subset(&res, []int{}, nums)
+	var cur []int
+	subset(&res, cur, nums)
 	return res
 }
