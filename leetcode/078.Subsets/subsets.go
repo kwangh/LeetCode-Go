@@ -12,7 +12,6 @@ func subset(res *[][]int, cur, nums []int) {
 
 func subsets(nums []int) [][]int {
 	var res [][]int
-	var cur []int
-	subset(&res, cur, nums)
+	subset(&res, nil, nums)
 	return res
 }
