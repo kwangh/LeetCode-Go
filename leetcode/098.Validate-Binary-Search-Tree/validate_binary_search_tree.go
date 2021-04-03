@@ -6,18 +6,21 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-func valid(root, min, max *TreeNode) bool {
-	if root == nil {
-		return true
-	}
-
-	if (min != nil && root.Val <= min.Val) || (max != nil && root.Val >= max.Val) {
-		return false
-	}
-    
-	return valid(root.Left, min, root) && valid(root.Right, root, max)
-}
-
 func isValidBST(root *TreeNode) bool {
-	return valid(root, nil, nil)
+	var stack []*TreeNode
+	var pre *TreeNode
+	for root != nil || len(stack) > 0 {
+		for root != nil {
+			stack = append(stack, root)
+			root = root.Left
+		}
+		root = stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
+		if pre != nil && root.Val <= pre.Val {
+			return false
+		}
+		pre = root
+		root = root.Right
+	}
+	return true
 }
