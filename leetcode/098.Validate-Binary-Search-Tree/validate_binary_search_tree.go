@@ -6,20 +6,21 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-func validation(root *TreeNode) bool {
-	if root == nil {
-		return true
-	}
-	if root.Left != nil && root.Left.Val >= root.Val {
-		return false
-	}
-	if root.Right != nil && root.Right.Val <= root.Val {
-		return false
-	}
-
-	return validation(root.Left) && validation(root.Right)
-}
-
 func isValidBST(root *TreeNode) bool {
-	return validation(root)
+	var stack []*TreeNode
+	var pre *TreeNode
+	for root != nil || len(stack) > 0 {
+		for root != nil {
+			stack = append(stack, root)
+			root = root.Left
+		}
+		root = stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
+		if pre != nil && root.Val <= pre.Val {
+			return false
+		}
+		pre = root
+		root = root.Right
+	}
+	return true
 }
