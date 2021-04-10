@@ -24,7 +24,7 @@ func TestQuickSort(t *testing.T) {
 		{s: []int{1, 2, 3}, want: []int{1, 2, 3}},
 	}
 	for _, c := range cases {
-		QuickSort(c.s, 0, len(c.s)-1)
+		QuickSort(c.s)
 		if !equal(c.s, c.want) {
 			t.Errorf("want:%v instead got:%v", c.want, c.s)
 		}

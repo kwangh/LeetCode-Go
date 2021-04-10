@@ -1,5 +1,7 @@
 package sort
 
+import "math/rand"
+
 // SelectionSort returns sorted int slice
 // time complexity: O(n^2)
 // space complexity: O(n)
@@ -83,29 +85,82 @@ func MergeSort(s []int, start int, end int) {
 	}
 }
 
+// Pivot returns pivot number which is
+// medain of 3 random numbers
+func Pivot(s []int) int {
+	n := len(s)
+	return Median(s[rand.Intn(n)],
+		s[rand.Intn(n)],
+		s[rand.Intn(n)])
+}
+
+// Median returns median of 3 numbers
+func Median(a, b, c int) int {
+	if a < b {
+		switch {
+		case b < c:
+			return b
+		case a < c:
+			return c
+		default:
+			return a
+		}
+	}
+	switch {
+	case a < c:
+		return a
+	case b < c:
+		return c
+	default:
+		return b
+	}
+}
+
+// Partition reorders the elements of s so that:
+// - all elements in s[:low] are less than p,
+// - all elements in s[low:high] are equal to p,
+// - all elements in s[high:] are greater than p.
+func Partition(s []int, p int) (low, high int) {
+	low, mid, high := 0, 0, len(s)
+	for mid < high {
+		// Invariant:
+		//  - v[:low] < p
+		//  - v[low:mid] = p
+		//  - v[mid:high] are unknown
+		//  - v[high:] > p
+		//
+		//         < p       = p        unknown       > p
+		//     -----------------------------------------------
+		// v: |          |          |a            |           |
+		//     -----------------------------------------------
+		//                ^          ^             ^
+		//               low        mid           high
+		switch a := s[mid]; {
+		case a < p:
+			s[mid], s[low] = s[low], s[mid]
+			low++
+			mid++
+		case a == p:
+			mid++
+		default: // a > p
+			s[mid], s[high-1] = s[high-1], s[mid]
+			high--
+		}
+	}
+	return
+}
+
 // QuickSort returns sorted int slice
 // time complexity: O(nlogn) worst case O(n^2)
 // space complexity: O(n)
-func QuickSort(s []int, start int, end int) {
-	i, j := start, end
-	pivot := s[(start+end)/2]
-	for i <= j {
-		for s[i] < pivot {
-			i++
-		}
-		for s[j] > pivot {
-			j--
-		}
-		if i <= j {
-			s[i], s[j] = s[j], s[i]
-			i++
-			j--
-		}
+// https://yourbasic.org/golang/quicksort-optimizations/
+func QuickSort(s []int) {
+	if len(s) < 20 {
+		InsertionSort(s)
+		return
 	}
-	if start < j {
-		QuickSort(s, start, j)
-	}
-	if i < end {
-		QuickSort(s, i, end)
-	}
+	p := Pivot(s)
+	low, high := Partition(s, p)
+	QuickSort(s[:low])
+	QuickSort(s[high:])
 }
