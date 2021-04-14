@@ -153,7 +153,6 @@ func Partition(s []int, p int) (low, high int) {
 // QuickSort returns sorted int slice
 // time complexity: O(nlogn) worst case O(n^2)
 // space complexity: O(n)
-// https://yourbasic.org/golang/quicksort-optimizations/
 func QuickSort(s []int) {
 	if len(s) < 20 {
 		InsertionSort(s)
