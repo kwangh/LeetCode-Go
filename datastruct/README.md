@@ -1,0 +1,3 @@
+- quick sort in Go
+  - https://yourbasic.org/golang/quicksort-optimizations/
+  - https://golang.org/src/sort/sort.go?s=6133:6158#L219
