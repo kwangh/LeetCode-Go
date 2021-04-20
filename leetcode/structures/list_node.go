@@ -2,14 +2,14 @@ package structures
 
 import "fmt"
 
-// ListNodes list node
-type ListNodes struct {
+// ListNode list node
+type ListNode struct {
 	Val  int
-	Next *ListNodes
+	Next *ListNode
 }
 
 // Ints returns int slices of list node
-func Ints(head *ListNodes) []int {
+func Ints(head *ListNode) []int {
 	limit, times := 100, 0
 	res := []int{}
 	for head != nil {
@@ -25,14 +25,14 @@ func Ints(head *ListNodes) []int {
 }
 
 // Lists returns list nodes
-func Lists(nums []int) *ListNodes {
+func Lists(nums []int) *ListNode {
 	if len(nums) == 0 {
 		return nil
 	}
-	l := &ListNodes{}
+	l := &ListNode{}
 	t := l
 	for _, v := range nums {
-		t.Next = &ListNodes{Val: v}
+		t.Next = &ListNode{Val: v}
 		t = t.Next
 	}
 	return l.Next
