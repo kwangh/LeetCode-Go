@@ -5,15 +5,10 @@ import (
 )
 
 func middleNode(head *ListNode) *ListNode {
-	cnt := 0
-	tmp := head
-	for tmp != nil {
-		cnt++
-		tmp = tmp.Next
+	slow, fast := head, head
+	for fast != nil && fast.Next != nil {
+		slow = slow.Next
+		fast = fast.Next.Next
 	}
-
-	for i := 0; i < cnt/2; i++ {
-		head = head.Next
-	}
-	return head
+	return slow
 }
