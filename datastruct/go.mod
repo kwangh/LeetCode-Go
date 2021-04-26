@@ -1,3 +1,3 @@
-module github.com/kwangh/go-tutorial/datastruct
+module github.com/kwangh/leetcode/datastruct
 
 go 1.15

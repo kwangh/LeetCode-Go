@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"github.com/kwangh/go-tutorial/datastruct/dp"
-	"github.com/kwangh/go-tutorial/datastruct/sort"
+	"github.com/kwangh/leetcode/datastruct/dp"
+	"github.com/kwangh/leetcode/datastruct/sort"
 )
 
 func main() {
