@@ -7,9 +7,9 @@ import (
 )
 
 func largestNumber(nums []int) string {
-	strNums := make([]string, 0, len(nums))
-	for _, v := range nums {
-		strNums = append(strNums, strconv.Itoa(v))
+	strNums := make([]string, len(nums))
+	for i, v := range nums {
+		strNums[i] = strconv.Itoa(v)
 	}
 
 	sort.Slice(strNums, func(i, j int) bool {
