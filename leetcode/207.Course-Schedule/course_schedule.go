@@ -22,15 +22,10 @@ func isAcyclic(g map[int][]int, visited, cur map[int]struct{}, node int) bool {
 
 func canFinishBFS(numCourses int, prerequisites [][]int) bool {
 	graph := make(map[int][]int)
+	degrees := make([]int, numCourses)
 	for _, p := range prerequisites {
 		graph[p[1]] = append(graph[p[1]], p[0])
-	}
-
-	degrees := make([]int, numCourses)
-	for _, g := range graph {
-		for _, v := range g {
-			degrees[v]++
-		}
+		degrees[p[0]]++
 	}
 
 	var nodes []int
