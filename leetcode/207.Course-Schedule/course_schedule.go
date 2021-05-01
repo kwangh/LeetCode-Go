@@ -57,9 +57,9 @@ func canFinish(numCourses int, prerequisites [][]int) bool {
 		graph[p[1]] = append(graph[p[1]], p[0])
 	}
 	visited := make(map[int]struct{})
+	cur := make(map[int]struct{})
 	for i := 0; i < numCourses; i++ {
 		if _, exist := visited[i]; !exist {
-			cur := make(map[int]struct{})
 			if !isAcyclic(graph, visited, cur, i) {
 				return false
 			}
