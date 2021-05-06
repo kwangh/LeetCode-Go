@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"github.com/kwangh/leetcode/datastruct/dp"
-	"github.com/kwangh/leetcode/datastruct/sort"
+	"github.com/kwangh/leetcode/algorithm/dp"
+	"github.com/kwangh/leetcode/algorithm/sort"
 )
 
 func main() {
