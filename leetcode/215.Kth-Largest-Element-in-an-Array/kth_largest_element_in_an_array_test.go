@@ -14,7 +14,7 @@ func TestFindKthLargest(t *testing.T) {
 	for _, c := range cases {
 		got := findKthLargest(c.nums, c.k)
 		if c.want != got {
-			t.Errorf("want:%d instead got:%d", c.want, got)
+			t.Errorf("nums:%v, k:%d\twant:%d instead got:%d", c.nums, c.k, c.want, got)
 		}
 	}
 }
