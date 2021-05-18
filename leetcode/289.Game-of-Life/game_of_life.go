@@ -1,54 +1,46 @@
 package leetcode
 
-func gameOfLife(board [][]int) {
-	b := make([][]int, len(board))
-	for i := range b {
-		b[i] = make([]int, len(board[0]))
+func max(a, b int) int {
+	if a > b {
+		return a
 	}
+	return b
+}
 
+func min(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
+}
+
+func Lives(board [][]int, i, j int) int {
+	var lives int
+	for x := max(i-1, 0); x <= min(i+1, len(board)-1); x++ {
+		for y := max(j-1, 0); y <= min(j+1, len(board[0])-1); y++ {
+			lives += board[x][y] & 1
+		}
+	}
+	lives -= board[i][j] & 1
+	return lives
+}
+
+func gameOfLife(board [][]int) {
 	for i := 0; i < len(board); i++ {
 		for j := 0; j < len(board[0]); j++ {
-			cnt := 0
-			if i-1 >= 0 {
-				if j-1 >= 0 && board[i-1][j-1] == 1 {
-					cnt++
-				}
-				if board[i-1][j] == 1 {
-					cnt++
-				}
+			lives := Lives(board, i, j)
 
-				if j+1 < len(board[0]) {
-					if board[i-1][j+1] == 1 {
-						cnt++
-					}
-				}
+			if (lives == 2 || lives == 3) && board[i][j] == 1 {
+				board[i][j] = 3
 			}
-			if j-1 >= 0 && board[i][j-1] == 1 {
-				cnt++
-			}
-			if j+1 < len(board[0]) && board[i][j+1] == 1 {
-				cnt++
-			}
-			if i+1 < len(board) {
-				if j-1 >= 0 && board[i+1][j-1] == 1 {
-					cnt++
-				}
-				if board[i+1][j] == 1 {
-					cnt++
-				}
-
-				if j+1 < len(board[0]) && board[i+1][j+1] == 1 {
-					cnt++
-				}
-			}
-
-			if cnt == 2 && board[i][j] == 1 {
-				b[i][j] = 1
-			}
-			if cnt == 3 {
-				b[i][j] = 1
+			if lives == 3 && board[i][j] == 0 {
+				board[i][j] = 2
 			}
 		}
 	}
-	copy(board, b)
+	for i := 0; i < len(board); i++ {
+		for j := 0; j < len(board[0]); j++ {
+			board[i][j] >>= 1
+		}
+	}
 }
