@@ -6,10 +6,8 @@ func maxProfit(prices []int) int {
 	for i := 1; i < len(prices); i++ {
 		if prices[i] < l {
 			l = prices[i]
-		} else if prices[i] > l {
-			if prices[i]-l > res {
-				res = prices[i] - l
-			}
+		} else if prices[i]-l > res {
+			res = prices[i] - l
 		}
 	}
 	return res
