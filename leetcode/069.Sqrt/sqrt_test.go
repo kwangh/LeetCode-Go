@@ -1,18 +1,15 @@
 package leetcode
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+)
 
 func TestMySqrt(t *testing.T) {
-	cases := []struct {
-		x    int
-		want int
-	}{
-		{4, 2}, {8, 2}, {1, 1}, {2, 1},
-	}
-	for _, c := range cases {
-		got := mySqrt(c.x)
-		if c.want != got {
-			t.Errorf("want:%d instead got:%d", c.want, got)
-		}
-	}
+	assert := assert.New(t)
+	assert.Equal(2, mySqrt(4), "mySqrt(4) should be 2")
+	assert.Equal(2, mySqrt(8), "mySqrt(8) should be 2")
+	assert.Equal(1, mySqrt(1), "mySqrt(1) should be 1")
+	assert.Equal(1, mySqrt(2), "mySqrt(2) should be 1")
 }
