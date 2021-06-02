@@ -2,32 +2,13 @@ package leetcode
 
 import (
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
-func Equal(a, b []int) bool {
-	if len(a) != len(b) {
-		return false
-	}
-	for i, v := range a {
-		if v != b[i] {
-			return false
-		}
-	}
-	return true
-}
-
 func TestTwoSum(t *testing.T) {
-	cases := []struct {
-		target     int
-		nums, want []int
-	}{
-		{9, []int{2, 7, 11, 15}, []int{0, 1}},
-		{6, []int{3, 2, 4}, []int{1, 2}},
-	}
-	for _, c := range cases {
-		got := TwoSum(c.nums, c.target)
-		if !Equal(c.want, got) {
-			t.Error()
-		}
-	}
+	assert := assert.New(t)
+	assert.Equal([]int{0, 1}, TwoSum([]int{2, 7, 11, 15}, 9), "TwoSum([2,7,11,15],9) should be [0,1]")
+	assert.Equal([]int{1, 2}, TwoSum([]int{3, 2, 4}, 6), "TwoSum([3,2,4],6) should be [1,2]")
+	assert.Equal([]int{0, 1}, TwoSum([]int{3, 3}, 6), "TwoSum([3,3],6) should be [0,1]")
 }
