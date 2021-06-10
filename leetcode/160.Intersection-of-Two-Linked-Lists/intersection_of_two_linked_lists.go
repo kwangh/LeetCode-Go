@@ -6,16 +6,24 @@ type ListNode struct {
 }
 
 func getIntersectionNode(headA, headB *ListNode) *ListNode {
-	m := make(map[*ListNode]struct{})
-	for headA != nil {
-		m[headA] = struct{}{}
-		headA = headA.Next
+	if headA == nil || headB == nil {
+		return nil
 	}
-	for headB != nil {
-		if _, ok := m[headB]; ok {
-			return headB
+
+	a, b := headA, headB
+	for a != b {
+		if a == nil {
+			a = headB
+		} else {
+			a = a.Next
 		}
-		headB = headB.Next
+
+		if b == nil {
+			b = headA
+		} else {
+			b = b.Next
+		}
 	}
-	return nil
+
+	return a
 }
