@@ -14,3 +14,13 @@ func reverseList(head *structures.ListNode) *structures.ListNode {
 	}
 	return cur
 }
+
+func reverseListRecursive(head *structures.ListNode) *structures.ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+	n := reverseList(head.Next)
+	head.Next.Next = head
+	head.Next = nil
+	return n
+}
