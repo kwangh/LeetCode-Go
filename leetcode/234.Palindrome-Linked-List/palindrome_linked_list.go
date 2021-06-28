@@ -6,26 +6,44 @@ type ListNode struct {
 }
 
 func isPalindrome(head *ListNode) bool {
-	slow, fast := head, head
-
+	fast := head
+	var rev *ListNode
 	for fast != nil && fast.Next != nil {
 		fast = fast.Next.Next
-		slow = slow.Next
+		head.Next, rev, head = rev, head, head.Next
 	}
-	var rev *ListNode
-	for slow != nil {
-		tmp := slow.Next
-		slow.Next = rev
-		rev = slow
-		slow = tmp
+	if fast != nil {
+		head = head.Next
 	}
 	for rev != nil {
 		if rev.Val != head.Val {
 			return false
 		}
-		rev = rev.Next
-		head = head.Next
+		rev, head = rev.Next, head.Next
+	}
+	return true
+}
+
+func isPalindromeRestore(head *ListNode) bool {
+	fast := head
+	var rev *ListNode
+	for fast != nil && fast.Next != nil {
+		fast = fast.Next.Next
+		head.Next, rev, head = rev, head, head.Next
 	}
 
-	return true
+	var tail *ListNode
+	if fast != nil {
+		tail = head.Next
+	} else {
+		tail = head
+	}
+
+	res := true
+	for rev != nil {
+		res = res && rev.Val == tail.Val
+		rev.Next, head, rev = head, rev, rev.Next
+		tail = tail.Next
+	}
+	return res
 }
