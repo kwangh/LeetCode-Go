@@ -29,7 +29,7 @@ func TestDivide(t *testing.T) {
 	}
 	for _, c := range cases {
 		got := divide(c.dividend, c.divisor)
-		t.Logf("dividend:%d, divisor:%d, want:%d, got:%d\n",c.dividend,c.divisor,c.want,got)
+		t.Logf("dividend:%d, divisor:%d, want:%d, got:%d\n", c.dividend, c.divisor, c.want, got)
 		if got != c.want {
 			t.Errorf("want:%d, instead got:%d\n", c.want, got)
 		}

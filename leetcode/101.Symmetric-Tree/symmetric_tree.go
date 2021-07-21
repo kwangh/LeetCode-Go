@@ -26,7 +26,7 @@ func isSymmetric(root *TreeNode) bool {
 }
 
 func isSymmetricIteratively(root *TreeNode) bool {
-    var l, r []*TreeNode
+	var l, r []*TreeNode
 	leftRoot, rightRoot := root.Left, root.Right
 	for leftRoot != nil || rightRoot != nil || len(l) != 0 || len(r) != 0 {
 		for leftRoot != nil && rightRoot != nil {
@@ -38,7 +38,7 @@ func isSymmetricIteratively(root *TreeNode) bool {
 			r = append(r, rightRoot)
 			rightRoot = rightRoot.Right
 		}
-        if (leftRoot == nil && rightRoot != nil) || (leftRoot != nil && rightRoot == nil) {
+		if (leftRoot == nil && rightRoot != nil) || (leftRoot != nil && rightRoot == nil) {
 			return false
 		}
 		leftRoot = l[len(l)-1]

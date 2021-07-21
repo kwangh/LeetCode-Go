@@ -20,7 +20,7 @@ func (i Image) ColorModel() color.Model {
 }
 
 func (i Image) At(x, y int) color.Color {
-	v := uint8(x *x - y)
+	v := uint8(x*x - y)
 
 	return color.RGBA{v, v, 255, 255}
 }
