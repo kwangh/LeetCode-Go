@@ -8,40 +8,14 @@ func convert(s string, numRows int) string {
 	if numRows == 1 {
 		return s
 	}
-	m := make([][]rune, numRows)
-	for i := range m {
-		m[i] = make([]rune, 1000)
-	}
-	x, y, down := 0, 0, true
-	for _, r := range s {
-		m[y][x] = r
-		if down {
-			if y+1 < numRows {
-				y++
-			} else {
-				down = false
-				x++
-				y--
-			}
-		} else {
-			if y-1 >= 0 {
-				y--
-				x++
-			} else {
-				down = true
-				y++
-			}
-		}
-	}
-
 	var sb strings.Builder
-	for i := range m {
-		for j := range m[i] {
-			if m[i][j] != 0 {
-				sb.WriteRune(m[i][j])
+	for i := 0; i < numRows; i++ {
+		for j := 0; j+i < len(s); j += 2*numRows - 2 {
+			sb.WriteByte(s[i+j])
+			if i != 0 && i != numRows-1 && j+2*numRows-2-i < len(s) {
+				sb.WriteByte(s[j+2*numRows-2-i])
 			}
 		}
 	}
-
 	return sb.String()
 }
