@@ -1,3 +1,5 @@
+package leetcode
+
 func abs(a int) int {
 	if a < 0 {
 		return -a
