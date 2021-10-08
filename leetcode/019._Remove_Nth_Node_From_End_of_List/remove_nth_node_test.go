@@ -26,6 +26,6 @@ func TestRemoveNthFromEnd(t *testing.T) {
 	}
 
 	for _, c := range cases {
-		t.Log(c.in, RemoveNthFromEnd(c.in, c.n))
+		t.Log(c.in, removeNthFromEnd(c.in, c.n))
 	}
 }
