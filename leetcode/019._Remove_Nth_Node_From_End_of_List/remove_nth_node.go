@@ -1,21 +1,22 @@
 package leetcode
 
-// ListNode structure
 type ListNode struct {
 	Val  int
 	Next *ListNode
 }
 
-// RemoveNthFromEnd remove nth node from end
-func RemoveNthFromEnd(head *ListNode, n int) *ListNode {
-	s := []*ListNode{}
-	for head != nil {
-		s = append(s, head)
-		head = head.Next
+func removeNthFromEnd(head *ListNode, n int) *ListNode {
+	newHead := &ListNode{0, head}
+	s, f := newHead, newHead
+	for n > 0 {
+		f = f.Next
+		n--
 	}
-	if len(s) == n {
-		return s[0].Next
+
+	for f.Next != nil {
+		f = f.Next
+		s = s.Next
 	}
-	s[len(s)-n-1].Next = s[len(s)-n].Next
-	return s[0]
+	s.Next = s.Next.Next
+	return newHead.Next
 }
