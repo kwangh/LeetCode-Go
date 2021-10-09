@@ -1,17 +1,19 @@
 package leetcode
 
 func lengthOfLongestSubstring(s string) int {
-	var max, start int
+	var max int
+	chars := make([]int, 128)
+	for i := range chars {
+		chars[i] = -1
+	}
+	start := -1
 	for i := range s {
-		j := start
-		for ; j < i; j++ {
-			if s[i] == s[j] {
-				start = j + 1
-				break
-			}
+		if chars[s[i]] > start {
+			start = chars[s[i]]
 		}
-		if i-start+1 > max {
-			max = i - start + 1
+		chars[s[i]] = i
+		if i-start > max {
+			max = i - start
 		}
 	}
 	return max

@@ -12,4 +12,5 @@ func TestLengthOfLongestSubstring(t *testing.T) {
 	a.Equal(1, lengthOfLongestSubstring("bbbbb"))
 	a.Equal(3, lengthOfLongestSubstring("pwwkew"))
 	a.Equal(0, lengthOfLongestSubstring(""))
+	a.Equal(1, lengthOfLongestSubstring("a"))
 }
