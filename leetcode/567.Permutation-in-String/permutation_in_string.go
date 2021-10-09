@@ -9,21 +9,30 @@ func checkInclusion(s1 string, s2 string) bool {
 		chars[s1[i]-'a']++
 		chars2[s2[i]-'a']++
 	}
-	for l := 0; l < len(s2)-len(s1); l++ {
-		if match(chars, chars2) {
+	var cnt int
+	for i := 0; i < 26; i++ {
+		if chars[i] == chars2[i] {
+			cnt++
+		}
+	}
+
+	for i := 0; i < len(s2)-len(s1); i++ {
+		if cnt == 26 {
 			return true
 		}
-		chars2[s2[l+len(s1)]-'a']++
-		chars2[s2[l]-'a']--
-	}
-	return match(chars, chars2)
-}
-
-func match(s1, s2 [26]int) bool {
-	for i := 0; i < 26; i++ {
-		if s1[i] != s2[i] {
-			return false
+		l, r := s2[i]-'a', s2[i+len(s1)]-'a'
+		chars2[l]--
+		if chars2[l] == chars[l] {
+			cnt++
+		} else if chars2[l]+1 == chars[l] {
+			cnt--
+		}
+		chars2[r]++
+		if chars2[r] == chars[r] {
+			cnt++
+		} else if chars2[r]-1 == chars[r] {
+			cnt--
 		}
 	}
-	return true
+	return cnt == 26
 }

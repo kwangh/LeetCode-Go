@@ -8,6 +8,7 @@ import (
 
 func TestCheckInclusion(t *testing.T) {
 	a := assert.New(t)
-	a.Equal(true, checkInclusion("ab", "eidbaooo"))
-	a.Equal(false, checkInclusion("ab", "eidboaoo"))
+	//a.Equal(true, checkInclusion("ab", "eidbaooo"))
+	//a.Equal(false, checkInclusion("ab", "eidboaoo"))
+	a.Equal(false, checkInclusion("hello", "ooolleoooleh"))
 }
